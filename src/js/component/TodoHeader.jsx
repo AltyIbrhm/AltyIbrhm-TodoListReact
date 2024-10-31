@@ -1,4 +1,5 @@
 import React from "react";
+import { postData } from "../lib/action";
 
 
 const TodoHeader = ({ todo, setTodo, task, setTasks, counter, setCounter }) => {
@@ -18,21 +19,13 @@ const TodoHeader = ({ todo, setTodo, task, setTasks, counter, setCounter }) => {
         //display on the console the string wrtitten in the text box
         console.log(todo)
         //create a new object with id title and done keys
-        let newTask = {
-            id: counter,
-            title: todo,
-            done: false
+        let newTaskItem = {
+            label: todo,
+            is_done: false
         }
-        console.log(newTask)
-        // use settTasks to create an new array
-        setTasks([...task, newTask]);
-
-
-
-        //increment the counter by 1
-        setCounter(counter + 1);
+        postData(setTasks, newTaskItem);
+        setTodo("")
     }
-
 
     return (
         <>
